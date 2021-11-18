@@ -42,59 +42,5 @@ def main():
     credentials_dict=config_type_string_to_dict(credentials_string)
     for i,j in credentials_dict.items():print(f"{i}: {j}")
     
-    """
-    try:env_vars_toggle=int(config_dict["use_env_vars"])
-    except ValueError:
-        print("env_vars_toggle should be either 1 or 0. Assuming 0")
-        env_vars_toggle=False # 
-    except KeyError:config_error("use_env_vars missing")""";
-    
-    
-    
-        
-    #if int(config_dict["use_env_vars"]): # use env variables
-        
-    
 
-
-    #os_path.dirname(os_path.realpath(__file__)) # py script directory
-    
-    """
-    platform_string=get_system()
-    if platform_string=="Windows":split_char=";" # windows
-    else:split_char=":" # macos, linux""";
-
-    print("Yes, indeed")
-    
-    
-    
-    """
-    class cred:
-        env_vars=os_environ.get("lvnvariables")
-        username,app_password,user,host,port,schema,site_url,start_path=env_vars.split(";")
-        URI=f"mysql://{user}@{host}:{port}/{schema}"
-        full_url=site_url+start_path
-        winuser=os_environ.get("username")
-    """;
-    """
-    class cred:
-        env_vars=os_environ.get("lvnvariables")
-        username,app_password,user,host,port,schema,site_url,start_path=env_vars.split(";")
-        URI=f"mysql://{user}@{host}:{port}/{schema}"
-        full_url=site_url+start_path
-        winuser=os_environ.get("username")
-
-    elif system()=="Darwin":#macos
-        class cred:
-            lvnvars=os_environ.get("lvnvariables")
-            username,app_password,user,host,port,schema,site_url,start_path=lvnvars.split(":")
-            
-            user=user.replace("£",":")
-            site_url=site_url.replace("£",":")
-            
-            URI=f"mysql://{user}@{host}:{port}/{schema}"
-            full_url=site_url+start_path
-            #winuser=os_environ.get("username")
-    """;
-    
 if __name__ == '__main__':main()
