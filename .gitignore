@@ -1,0 +1,9 @@
+logging.log
+test.py
+testfolder/*
+data/credentials.ini
+data/config.ini
+data/users.csv
+output/*
+src/__pycache__/*
+src/core/__pycache__/*
