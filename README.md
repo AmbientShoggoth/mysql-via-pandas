@@ -8,6 +8,7 @@ Github: https://github.com/AmbientShoggoth/mysql-via-pandas
 ToDo:
 * Restore gui as alternative usage method
 * Port over (and anonymize) some of my less basic scripts
+* Reconsider name?
 
 # Usage Instructions:
 * Download/clone repository
