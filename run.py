@@ -3,8 +3,8 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, DateField
 from wtforms.validators import DataRequired
 
-from os import makedirs, chdir as os_chdir
-from os.path import isdir as os_isdir, dirname as os_dirname, realpath as os_realpath
+from os import chdir as os_chdir
+from os.path import dirname as os_dirname, realpath as os_realpath
 os_chdir(os_dirname(os_realpath(__file__)))
 
 import logging
@@ -26,7 +26,7 @@ if config_status:
     input(f"Config files have been generated. Ensure they are properly configured, then run again.")
     exit()
 
-#import src here
+#import scripts here
 import src.basic_example
 #import src.
 
@@ -39,10 +39,13 @@ class User(flask_login.UserMixin):# inherit from UserMixin
         self.id=id
         self.passhash=passhash
 
+#retrieve users info
 with open("./data/users.csv",newline="",encoding="utf-8-sig") as csvfile:
     USERS={int(uid):User(name,int(uid),passw) for uid,name,passw in reader(csvfile,delimiter=",")}
 USER_NAMES = { u.name:u for u in USERS.values() }
-
+if not len(USER_NAMES):
+    from sys import exit
+    input(f"No users have been added: Use 'addusers.py' to do so.")
 
 class LoginForm(FlaskForm): # see login route
     username = StringField("Username",validators=[DataRequired()])
@@ -132,6 +135,7 @@ def basic_example():
 
 ###
 
+# redirects to login page - sets next to current page=allows returning to page after login
 @login_manager.unauthorized_handler
 def unauthorized_callback():
     return( redirect(flask.url_for('login')+"?next="+request.path) )
